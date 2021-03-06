@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {PokemonDetails} from '../models/pokemonDetails.models';
 import {PokemonService} from '../services/pokemon.service';
 import {ActivatedRoute} from '@angular/router';
@@ -8,21 +8,17 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './pokemon-detail.component.html',
   styleUrls: ['./pokemon-detail.component.scss']
 })
-export class PokemonDetailComponent implements OnChanges {
-  @Input() selectedPokemon ?: number ;
-
+export class PokemonDetailComponent implements OnInit {
   pokemonDetails ?: PokemonDetails;
   constructor(private pokemonservice: PokemonService, private route: ActivatedRoute ) { }
 
-  ngOnChanges(): void {
+  ngOnInit(): void {
     this.getPokemon();
   }
-
   getPokemon(): void{
-    if (this.selectedPokemon != null) {
-    this.pokemonservice.getPokemon(this.selectedPokemon).subscribe(pokemon  => this.pokemonDetails = pokemon);
-    //console.log(this.pokemonDetails);
-    }
+    const id = this.route.snapshot.paramMap.get('id');
+    this.pokemonservice.getPokemon(id).subscribe(pokemon  => this.pokemonDetails = pokemon);
+    console.log(this.pokemonDetails);
   }
 
 }

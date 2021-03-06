@@ -1,11 +1,11 @@
-<mat-nav-list class="listPokemon" infiniteScroll (scrolled)="getPokemonOnScroll()" [scrollWindow]="false">
-  <input type="search" class="searchPokemonInput" placeholder="Recherchez votre Pokémon"  [ngModel]="search" (ngModelChange)="getPokemonOnSearch($event)">
-  <mat-list>
-    <mat-list-item *ngFor="let pokemon of pokemonsList" (click)="BottlePokemonToTheSea(this.pokemon.id)">
-        <img matListAvatar src='assets/img/sprites/{{pokemon.id}}.png' alt="Pokemon Photo">
-        <h3 matLine> {{pokemon.id}}.</h3>
-        <div>{{pokemon.name}}</div>
-    </mat-list-item>
-  </mat-list>
-</mat-nav-list>
+<mat-nav-list infiniteScroll (scrolled)="getPokemonOnScroll()">
+<mat-list>
+  <mat-list-item *ngFor="let pokemon of pokemonsList">
+    <img matListAvatar src='assets/img/sprites/{{pokemon.id}}.png' alt="Pokemon Photo">
 
+    <h3 matLine> {{pokemon.id}}.</h3>
+    <nav><a routerLink="./detail/{{pokemon.id}}">{{pokemon.name}}</a></nav>
+
+  </mat-list-item>
+</mat-list>
+</mat-nav-list>

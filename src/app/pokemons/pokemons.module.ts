@@ -9,16 +9,11 @@ import {MatCardModule} from '@angular/material/card';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { PokedexComponent } from './pokedex/pokedex.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {FormsModule} from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [PokemonListComponent, PokemonDetailComponent, PokedexComponent],
-  exports: [
-    PokedexComponent
-  ],
   imports: [
     CommonModule,
     MatListModule,
@@ -26,9 +21,7 @@ import {FormsModule} from '@angular/forms';
     MatGridListModule,
     AppRoutingModule,
     MatCardModule,
-    InfiniteScrollModule,
-    MatSidenavModule,
-    FormsModule
+    InfiniteScrollModule
   ]
 })
 export class PokemonsModule { }

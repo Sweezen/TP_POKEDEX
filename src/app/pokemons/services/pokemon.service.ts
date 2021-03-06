@@ -16,13 +16,8 @@ export class PokemonService {
       map(apiResponse => apiResponse.data)
     ); }
 
-  getPokemon(id: number | undefined): Observable<PokemonDetails> {
+  getPokemon(id: string | null): Observable<PokemonDetails> {
     return this.http.get<PokemonDetails>(this.pokemonUrl + '/' + id);
-  }
-  getPokemonOnSearch(pokemonToSearch : number):Observable<Pokemon[]>{
-    return this.http.get<apiObject>(this.pokemonUrl + '?search=' + pokemonToSearch ).pipe(
-      map(apiResponse => apiResponse.data)
-    );
   }
   getPokemonOnScroll(offset: number, limit: number): Observable<Pokemon[]>{
     return this.http.get<apiObject>(this.pokemonUrl + '?offset=' + offset + '&limit=' + limit ).pipe(
