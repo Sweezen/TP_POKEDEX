@@ -1,0 +1,9 @@
+
+<mat-sidenav-container class="sideNavContainer" >
+  <mat-sidenav   opened mode="side">
+    <app-pokemon-list (idEvent)="getBottleOfTheSea($event)"></app-pokemon-list>
+  </mat-sidenav>
+  <mat-sidenav-content class ="sideNavContent">
+  <app-pokemon-detail [selectedPokemon]="idEvent"></app-pokemon-detail>
+  </mat-sidenav-content>
+</mat-sidenav-container>

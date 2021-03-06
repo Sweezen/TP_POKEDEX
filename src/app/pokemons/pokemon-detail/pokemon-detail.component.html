@@ -1,0 +1,40 @@
+<mat-card class='PokemonCard' *ngIf="pokemonDetails">
+  <mat-grid-list cols="2" rowHeight="300px">
+
+    <mat-grid-tile>
+      <div><img mat-card-lg-image src="assets/img/official-artwork/{{pokemonDetails.id}}.png"
+                alt="Photo réaliste de pokemon"></div>
+      <div class="pokemonID" matLine> No. {{pokemonDetails.id  | number:'3.'}}  </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-list>
+        <mat-list-item>
+          <mat-card-title> {{pokemonDetails.name}}
+            <button class="audio-player">
+              <mat-icon (click)=audio.play()>play_arrow</mat-icon>
+            </button>
+          </mat-card-title>
+        </mat-list-item>
+        <mat-list-item>
+          <div class="PokemonTypes" *ngFor="let type of pokemonDetails.types"> {{type}} </div>
+        </mat-list-item>
+        <mat-list-item>
+          <div matLine> Height : {{pokemonDetails.height}} m</div>
+        </mat-list-item>
+        <mat-list-item>
+          <div matLine> Weight : {{pokemonDetails.weight}} Kg</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div matLine><h2>Description </h2> {{pokemonDetails.description}} </div>
+  <audio #audio
+         autoplay
+         src="/assets/audio/{{pokemonDetails.id}}.mp3">
+  </audio>
+</mat-card>
+
+
+
